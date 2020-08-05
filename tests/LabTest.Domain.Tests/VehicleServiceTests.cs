@@ -9,9 +9,9 @@ namespace LabTest.Domain.Tests
 {
     public class VehicleServiceTests
     {
-        private Mock<IVehicleRepository> VehicleRepository = new Mock<IVehicleRepository>();
-        private Mock<IBrandRepository> BrandRepository = new Mock<IBrandRepository>();
-        private Mock<IUnitOfWork> UoW = new Mock<IUnitOfWork>();
+        private readonly Mock<IVehicleRepository> VehicleRepository = new Mock<IVehicleRepository>();
+        private readonly Mock<IBrandRepository> BrandRepository = new Mock<IBrandRepository>();
+        private readonly Mock<IUnitOfWork> UoW = new Mock<IUnitOfWork>();
 
         private Brand NewValidBrand = new Brand("A Brand");
 
@@ -29,7 +29,7 @@ namespace LabTest.Domain.Tests
         }
 
         [Fact]
-        public void Should_RetrurnError_If_BrandName_AlreadyExists()
+        public void Should_ReturnError_If_BrandName_AlreadyExists()
         {
             //BrandRepository.Setup(r => r.Add(It.IsAny<Brand>())).Returns(NewValidBrand);
             BrandRepository.Setup(r => r.GetByName(It.IsAny<string>())).Returns(NewValidBrand);
