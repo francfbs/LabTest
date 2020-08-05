@@ -7,6 +7,8 @@ namespace LabTest.Domain.Entities
             Name = name;
         }
 
+        protected Brand() { }
+
         public int Id { get; }
         public string Name { get; }
     }
