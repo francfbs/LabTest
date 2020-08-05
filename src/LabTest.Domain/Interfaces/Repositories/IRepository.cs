@@ -8,5 +8,6 @@ namespace LabTest.Domain.Interfaces.Repositories
         T Update(T obj);
         T Delete(T obj);
         T GetById(Guid id);
+        int SaveChanges();
     }
 }
