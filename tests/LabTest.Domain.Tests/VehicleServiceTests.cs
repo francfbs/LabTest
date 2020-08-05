@@ -3,6 +3,7 @@ using LabTest.Domain.Interfaces.Repositories;
 using LabTest.Domain.Services;
 using Moq;
 using System;
+using System.ComponentModel;
 using Xunit;
 
 namespace LabTest.Domain.Tests
@@ -13,9 +14,10 @@ namespace LabTest.Domain.Tests
         private readonly Mock<IBrandRepository> BrandRepository = new Mock<IBrandRepository>();
         private readonly Mock<IUnitOfWork> UoW = new Mock<IUnitOfWork>();
 
-        private Brand NewValidBrand = new Brand("A Brand");
+        private readonly Brand NewValidBrand = new Brand("A Brand");
 
         [Fact]
+        [Trait("Category", "Brand")]
         public void Should_AddBrand_Success()
         {
             BrandRepository.Setup(r => r.Add(It.IsAny<Brand>())).Returns(NewValidBrand);
@@ -29,6 +31,7 @@ namespace LabTest.Domain.Tests
         }
 
         [Fact]
+        [Trait("Category", "Brand")]
         public void Should_ReturnError_If_BrandName_AlreadyExists()
         {
             //BrandRepository.Setup(r => r.Add(It.IsAny<Brand>())).Returns(NewValidBrand);
@@ -44,6 +47,7 @@ namespace LabTest.Domain.Tests
         }
 
         [Fact]
+        [Trait("Category", "Brand")]
         public void Should_ReturnErrorOnSaveThrows()
         {
             BrandRepository.Setup(r => r.Add(It.IsAny<Brand>())).Returns(NewValidBrand);
