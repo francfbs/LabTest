@@ -37,9 +37,7 @@ namespace LabTest.Domain.Services
 
             _brandRepository.Add(brand);
 
-            if(Commit()) return OkResult(brand);
-
-            return FailResult(Errors);
+            return Commit() ? OkResult(brand) : FailResult(Errors);
         }
 
         public ServiceResult UpdateBrand(Brand brand)
