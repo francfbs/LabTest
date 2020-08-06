@@ -42,7 +42,12 @@ namespace LabTest.Domain.Services
 
         public ServiceResult UpdateBrand(Brand brand)
         {
-            throw new System.NotImplementedException();
+            if (!ValidateBusinessRules(new BrandUpdateValidations(_brandRepository).Validate(brand)))
+                return FailResult(Errors);
+
+            _brandRepository.Update(brand);
+
+            return Commit() ? OkResult(brand) : FailResult(Errors);
         }
 
         public ServiceResult DeleteBrand(int brandId)

@@ -4,17 +4,18 @@ using SpecificationExpress;
 
 namespace LabTest.Domain.Services.Specifications
 {
-    public class BrandNameMustBeUnic : ISpecification<Brand>
+    public class UpdateBrandNameMustBeUnique : ISpecification<Brand>
     {
         private readonly IBrandRepository _brandRepository;
 
-        public BrandNameMustBeUnic(IBrandRepository brandRepository)
+        public UpdateBrandNameMustBeUnique(IBrandRepository brandRepository)
         {
             _brandRepository = brandRepository;
         }
         public bool IsSatisfiedBy(Brand obj)
         {
-            return _brandRepository.GetByName(obj.Name) == null;
+            var brand = _brandRepository.GetByName(obj.Name);
+            return brand == null || brand.Id == obj.Id;
         }
     }
 }

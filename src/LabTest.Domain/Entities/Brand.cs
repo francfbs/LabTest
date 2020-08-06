@@ -9,7 +9,7 @@ namespace LabTest.Domain.Entities
 
         protected Brand() { }
 
-        public int Id { get; }
+        public virtual int Id { get; }
         public string Name { get; }
     }
 }

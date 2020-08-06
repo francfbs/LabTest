@@ -5,11 +5,11 @@ using SpecificationExpress;
 
 namespace LabTest.Domain.Services.Validations
 {
-    public class BrandAddValidations : Validator<Brand>
+    public class BrandUpdateValidations : Validator<Brand>
     {
-        public BrandAddValidations(IBrandRepository brandRepository)
+        public BrandUpdateValidations(IBrandRepository brandRepository)
         {
-            Add(new Rule<Brand>(new AddBrandNameMustBeUnique(brandRepository), "Brand name is already registered!"));
+            Add(new Rule<Brand>(new UpdateBrandNameMustBeUnique(brandRepository), "Brand name is already registered!"));
             // put here more rules if necessary
         }
     }
